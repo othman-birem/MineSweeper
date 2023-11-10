@@ -1,5 +1,6 @@
 ## Getting Started
 
+Hello, this is one of my first humble learning projects as a beginner and i thought that it would be of help to some people to share it in here, So enjoy and don't forget that i'm open to any questions or clarifications about this project or any other that i might be familiar with , We learn together.
 Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
 ## Folder Structure
