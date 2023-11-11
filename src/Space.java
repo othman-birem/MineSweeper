@@ -35,7 +35,7 @@ public class Space extends JPanel {
         return flagged;
     }
 
-    public void clear() {
+    public void Clear() {
         cleared = true;
     }
 
