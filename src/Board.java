@@ -72,6 +72,8 @@ public class Board extends Container implements MouseListener {
         return board;
     }
 
+    // #region Events
+
     @Override
     public void mouseClicked(MouseEvent e) {
         Space Source = (Space) e.getSource();
@@ -126,5 +128,5 @@ public class Board extends Container implements MouseListener {
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
     }
-
+    // #endregion
 }
