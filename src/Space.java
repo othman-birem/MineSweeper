@@ -47,6 +47,10 @@ public class Space extends JPanel {
         return bomb;
     }
 
+    public void SetHasBomb(boolean Cond) {
+        bomb = Cond;
+    }
+
     public int getBombNearBy() {
         return bombNearBy;
     }

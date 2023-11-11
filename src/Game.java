@@ -18,7 +18,7 @@ public class Game {
     public static final int Y = 15;
     protected JFrame window;
 
-    public static final int BOMB_COUNT = 30;
+    public static final int BOMB_COUNT = 25;
     /*
      * private int sb_width = 100;
      * private boolean win = false;

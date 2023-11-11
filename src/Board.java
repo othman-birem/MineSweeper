@@ -28,10 +28,25 @@ public class Board extends Container implements MouseListener {
                     this.add(board[i][j]);
                 }
             }
+            if (reminder != 0)
+                PlantBombRest(reminder);
         } catch (IOException e) {
             e.printStackTrace();
         }
         calculate();
+    }
+
+    private void PlantBombRest(int bombs) throws IOException {
+        double probability = (double) bombs / ((Game.X * Game.Y) - 8 * bombs / 10);
+        for (int i = 0; i < Game.Y; i++) {
+            for (int j = 0; j < Game.X; j++) {
+                if (bombs > 0 && Math.random() < probability && !board[i][j].hasBomb()) {
+                    board[i][j].SetHasBomb(true);
+                    bombs--;
+                }
+            }
+        }
+        // JOptionPane.showMessageDialog(this, "" + bombs);
     }
 
     private void calculate() {
@@ -74,9 +89,11 @@ public class Board extends Container implements MouseListener {
     }
 
     public void NormalizeEmptySpaces(Space INITIAL_CELL, int[] Coordinations) throws IOException {
-        INITIAL_CELL.setImage("Images/MineSweeperimgs/" + INITIAL_CELL.getBombNearBy() + ".png");
-        INITIAL_CELL.Clear();
-        ClearedSpaces++;
+        if (!INITIAL_CELL.isCleared()) {
+            INITIAL_CELL.setImage("Images/MineSweeperimgs/" + INITIAL_CELL.getBombNearBy() + ".png");
+            INITIAL_CELL.Clear();
+            ClearedSpaces++;
+        }
         if (Coordinations[0] > 0 && !board[Coordinations[0] - 1][Coordinations[1]].isCleared()) {
             board[Coordinations[0] - 1][Coordinations[1]]
                     .setImage("Images/MineSweeperimgs/" + board[Coordinations[0] - 1][Coordinations[1]].getBombNearBy()
@@ -215,6 +232,7 @@ public class Board extends Container implements MouseListener {
                         Source.setImage("Images/MineSweeperimgs/" + Source.getBombNearBy() + ".png");
                         Source.Clear();
                         ClearedSpaces++;
+                        // JOptionPane.showMessageDialog(this, ClearedSpaces + "");
                         if (hasPlayerWon()) {
                             int Option01 = JOptionPane.showOptionDialog(null,
                                     "You Have Won !\n\nWould you like to start a new game ?", "New Game",
